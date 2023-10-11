@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ folder_name }}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">{{ folder_name }}</h1>
+        <ul>
+            {% for email in filtered_emails %}
+            <li>
+                <strong>MSGID:</strong> {{ email.MSGID }}<br> <br>
+                <strong>Sent Date:</strong> {{ email.Sent }}<br> <br>
+                <strong>Received Date:</strong> {{ email.Received }}<br> <br>
+                <strong>From:</strong> {{ email.From }}<br> <br>
+                <strong>To:</strong> {{ email.To }}<br> <br>
+                <strong>CC:</strong> {{ email.CC }}<br> <br>
+                <strong>Subject:</strong> {{ email.Subject }}<br> <br>
+                <strong>Body:</strong> {{ email.Body }}<br> <br>
+            </li>
+            <br>
+            <br>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ folder_name }}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        body {
+            background-color: #e7f0f4; /* Light blue background color */
+        }
+
+        .email-details {
+            word-wrap: break-word; /* Wrap text to the next line */
+        }
+
+        .msg-id {
+            max-width: 100%; /* Limit MSGID width to 100% of the parent container */
+            word-wrap: break-word; /* Wrap MSGID text */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-4">
+        <h1 class="text-center">{{ folder_name }}</h1>
+        <ul class="list-group">
+            {% for email in filtered_emails %}
+            <li class="list-group-item my-4">
+                <div class="email-details">
+                    <h6 class="mb-3"><strong class="msg-id">MSGID:</strong> {{ email.MSGID }}</h6>
+                    <p><strong>Sent Date:</strong> {{ email.Sent }}</p>
+                    <p><strong>Received Date:</strong> {{ email.Received }}</p>
+                    <p><strong>From:</strong> {{ email.From }}</p>
+                    <p><strong>To:</strong> {{ email.To }}</p>
+                    <p><strong>CC:</strong> {{ email.CC }}</p>
+                    <p><strong>Subject:</strong> {{ email.Subject }}</p>
+                    <p><strong>Body:</strong> {{ email.Body }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

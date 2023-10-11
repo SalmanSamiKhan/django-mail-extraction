@@ -1,0 +1,61 @@
+[
+  {
+    "Folder": "Sent Items",
+    "MSGID": "AAMkAGRlMDNkMTRmLTY0ZjItNDZjMS04MjM0LTdlNmYwNjJlYjc4YwBGAAAAAAB0uGCTa3z5Q6Xa4vhIWPY9BwByTmailwxARawaAefn56FbAAAAAAEJAAByTmailwxARawaAefn56FbAAADcIQUAAA=",
+    "Sent": "2023-10-11T15:16:28Z",
+    "Received": "2023-10-11T15:16:31Z",
+    "From": "Salman@altersenseltd.onmicrosoft.com",
+    "To": [
+      "Salman@altersenseltd.onmicrosoft.com"
+    ],
+    "CC": [
+      "altersense.rpa@altersenseltd.onmicrosoft.com",
+      "altersenserpa@altersenseltd.onmicrosoft.com"
+    ],
+    "Subject": "Sent Mail from shared folder",
+    "Body": "this mail is sent from shared mailbox Sent Items folder"
+  },
+  {
+    "Folder": "Test Folder",
+    "MSGID": "AAMkAGRlMDNkMTRmLTY0ZjItNDZjMS04MjM0LTdlNmYwNjJlYjc4YwBGAAAAAAB0uGCTa3z5Q6Xa4vhIWPY9BwByTmailwxARawaAefn56FbAAADcFkVAAByTmailwxARawaAefn56FbAAADcIAoAAA=",
+    "Sent": "2023-10-11T05:43:55Z",
+    "Received": "2023-10-11T05:44:00Z",
+    "From": "Salman@altersenseltd.onmicrosoft.com",
+    "To": [
+      "altersense.rpa@altersenseltd.onmicrosoft.com"
+    ],
+    "CC": [
+      "Salman@altersenseltd.onmicrosoft.com"
+    ],
+    "Subject": "Fw: Verify your email address",
+    "Body": "From: HP ID Support <no-reply@id.hp.com>Sent: Wednesday, October 11, 2023 11:39 AMTo: Salman Sami Khan <Salman@altersenseltd.onmicrosoft.com>Subject: Verify your email address Verify your email address Select the \"Verify\" button to verify your email address: VerifyYou may also copy and paste this link into a browser window: https://login3.id.hp.com/login3/verification?otp=u93uw4sq1g34jz1yijph9j5o3p88zafk This link will expire in 48 hours If you cannot select the link, copy and paste the 6-digit code into the designated field: 512127The verification code will expire in 15 minutes. This email address can't receive replies. This email was sent to alert you to important updates to your HP account. For more information, visit https://myaccount.id.hp.com/uaa \u00a9 Copyright 2023 HP Development Company, L.P."
+  },
+  {
+    "Folder": "Inbox",
+    "MSGID": "AQMkAGRlMDNkMTRmLTY0ZjItNDZjMS04MjM0LTdlNmYwNjJlYjc4YwBGAAADdLhgk2t8_UOl2uL4SFj2PQcAck5mopcMQEWsGgHn5wGhWwAAAgEMAAAAck5mopcMQEWsGgHn5wGhWwAAAgVQAAAA",
+    "Sent": "2023-10-02T12:10:42Z",
+    "Received": "2023-10-02T12:11:03Z",
+    "From": "salmansamiikhan@gmail.com",
+    "To": [
+      "altersense.rpa@altersenseltd.onmicrosoft.com"
+    ],
+    "CC": [],
+    "Subject": "Test Mail 2",
+    "Body": "This mail sent to outlook shared mailbox"
+  },
+  {
+    "Folder": "Inbox",
+    "MSGID": "AQMkAGRlMDNkMTRmLTY0ZjItNDZjMS04MjM0LTdlNmYwNjJlYjc4YwBGAAADdLhgk2t8_UOl2uL4SFj2PQcAck5mopcMQEWsGgHn5wGhWwAAAgEMAAAAck5mopcMQEWsGgHn5wGhWwAAAgVPAAAA",
+    "Sent": "2023-10-02T12:05:39Z",
+    "Received": "2023-10-02T12:05:56Z",
+    "From": "salmansamiikhan@gmail.com",
+    "To": [
+      "altersense.rpa@altersenseltd.onmicrosoft.com"
+    ],
+    "CC": [
+      "salman@altersense.com"
+    ],
+    "Subject": "Test Mail to shared folder",
+    "Body": "This is a test mail sent to shared outlook folder"
+  }
+]

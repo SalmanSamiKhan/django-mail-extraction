@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,16 +12,47 @@
 
 <body>
     <div class="text-center my-3 mx-3">
-        <div class="btn-group">
-            <!-- Add your buttons here -->
-            <a href="{% url 'emails'}">
-                <!-- <button class="btn btn-info mx-3" onclick=>Inbox</button> -->
-                Inbox
-            </a>
-            <button class="btn btn-info mx-3">Draft</button>
-            <button class="btn btn-info mx-3">Sent Items</button>
-        </div>
+            <h1>Folders</h1>
+            {% for folder in folder_names}
+            {{folder}}
+            {end}
     </div>
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Shared Mail Folders</h1>
+        <div class="row">
+            {% for folder_name in folder_names %}
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">{{ folder_name }}</h5> -->
+                        <!-- Add your folder icon or image here -->
+                        <a href="{% url 'folder_view' folder_name=folder_name %}">
+                            <i class="fa fa-folder" style="font-size:20px;"> <p class="my-2" style="color: black;">{{ folder_name }}</p> </i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

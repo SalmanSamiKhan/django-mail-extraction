@@ -74,10 +74,12 @@
 
 
 <!-- contact.html -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
-    <!-- Include Bootstrap CSS -->
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -106,9 +108,64 @@
         </form>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="position: relative;">
+    <div class="container">
+        <h1 class="my-4">Credentials</h1>
+        <form method="post" action="{% url 'user_input' %}" onsubmit="showSpinner()">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Shared Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="tenant_id">Tenant Id</label>
+                <input type="text" class="form-control" id="tenant_id" name="tenant_id" required>
+            </div>
+            <div class="form-group">
+                <label for="client_id">Client Id</label>
+                <input type="text" class="form-control" id="client_id" name="client_id" required>
+            </div>
+            <div class="form-group">
+                <label for="client_secret">Client Secret</label>
+                <input type="text" class="form-control" id="client_secret" name="client_secret" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <!-- Spinner -->
+    <div id="spinner-container" style="display: none; position: absolute; bottom: 20px; right: 20px;">
+        <div class="spinner-border text-primary" role="status" style="font-size: 2rem;">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div>Extracting Mails</div>
+    </div>
+
     <!-- Include Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showSpinner() {
+            // Show the spinner container when the form is submitted
+            document.getElementById('spinner-container').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

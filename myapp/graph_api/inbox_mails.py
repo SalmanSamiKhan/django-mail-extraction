@@ -1,13 +1,19 @@
 from bs4 import BeautifulSoup
+import requests
 
 
 # class ExtractInboxMails:
-def get_inbox_mails(inbox_response):
+def get_inbox_mails(inbox_response, shared_email, access_token):
     data = []
     if inbox_response.status_code == 200:
         emails = inbox_response.json().get("value", [])
 
         for email in emails:
+            
+            folder_id = email['parentFolderId']
+            # Get the folder name using the folder ID
+            folder_name = get_folder_name(shared_email, folder_id, access_token)
+            
             msgid = email["id"]
             sender = (
                 email.get("sender", {})
@@ -55,9 +61,10 @@ def get_inbox_mails(inbox_response):
             
             data.append(
                 {
+                    'Folder':folder_name,
                     'MSGID': msgid,
-                    'Sent Date': sent_time,
-                    'Received Date': received_time,
+                    'Sent': sent_time,
+                    'Received': received_time,
                     'From': sender_email,
                     'To': receiver_emails,
                     'CC': cc_emails,
@@ -72,3 +79,19 @@ def get_inbox_mails(inbox_response):
         print(f"Error: {inbox_response.status_code} - {inbox_response.text}")
         
     return data
+
+def get_folder_name(shared_email, folder_id, access_token):
+    folder_url = f"https://graph.microsoft.com/v1.0/users/{shared_email}/mailFolders/{folder_id}"
+    
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+    }
+    
+    folder_response = requests.get(folder_url, headers=headers)
+    
+    # if folder_response.status_code == 200:
+    folder_data = folder_response.json()
+    folder_name = folder_data['displayName']
+    return folder_name
+    # else:
+    #     return "Unknown Folder"

@@ -1,7 +1,8 @@
 # Import necessary modules from graph_api package
 import json
+import os
 from django.http import JsonResponse
-from .graph_api import get_azure_token, get_inbox_response, get_inbox_mails, create_excel
+from .graph_api import get_azure_token, get_inbox_response, get_inbox_mails, create_excel, get_folder_names
 
 # # Get microsoft azure token
 # azure_token = get_azure_token()
@@ -17,7 +18,7 @@ def extract_mail(shared_email,tenant_id,client_id,client_secret):
     
     # Configuration
     query_parameters = {
-        "$select": "id,sender,subject,body,toRecipients,ccRecipients,receivedDateTime,sentDateTime",
+        "$select": "parentFolderId,id,sender,subject,body,toRecipients,ccRecipients,receivedDateTime,sentDateTime",
         "$orderby": "sentDateTime desc",  # Sort by received date/time in descending order
     }
 
@@ -43,8 +44,23 @@ def extract_mail(shared_email,tenant_id,client_id,client_secret):
     inbox_response = get_inbox_response(azure_token, graph_api_url, query_parameters)
 
     # Get inbox mails using inbox response
-    email_data = get_inbox_mails(inbox_response=inbox_response)
-    # json_email_data = json.dumps(email_data, indent=2)
+    email_data = get_inbox_mails(inbox_response, shared_email, azure_token)
+    
+    folder_names = get_folder_names(shared_email, azure_token)
+
+    json_mail_data = json.dumps(email_data, indent=2)
+    
+    # save json
+    # Get the project's base directory
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Define the path to save the JSON file (e.g., in the media directory)
+    json_file_path = os.path.join(base_dir, 'media', 'json_mail_data.json')
+
+    # Save the JSON data to the file
+    with open(json_file_path, 'w') as json_file:
+        json_file.write(json_mail_data)
+    
     # json_email_data = JsonResponse({'json email data':json_email_data})
-    json_email_data = email_data
-    return json_email_data
+
+    return email_data,folder_names

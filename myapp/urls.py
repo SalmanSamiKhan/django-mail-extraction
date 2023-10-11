@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.user_input, name='user_input'),
     path('emails/', views.user_input, name='user_input'),
-    # path('email_folders/', views.email_folders, name='email_folders')
+    path('email_folders/', views.user_input, name='email_folders'),
+    path('folder/<str:folder_name>/', views.folder_view, name='folder_view'),
 ]
