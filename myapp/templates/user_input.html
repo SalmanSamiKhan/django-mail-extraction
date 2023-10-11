@@ -117,6 +117,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -124,9 +125,10 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body style="position: relative;">
+
+<body style="position: relative; min-height: 100vh;">
     <div class="container">
-        <h1 class="my-4">Credentials</h1>
+        <h1 class="my-2">Credentials</h1>
         <form method="post" action="{% url 'user_input' %}" onsubmit="showSpinner()">
             {% csrf_token %}
             <div class="form-group">
@@ -138,7 +140,7 @@
                 <input type="text" class="form-control" id="tenant_id" name="tenant_id" required>
             </div>
             <div class="form-group">
-                <label for="client_id">Client Id</label>
+                <label for "client_id">Client Id</label>
                 <input type="text" class="form-control" id="client_id" name="client_id" required>
             </div>
             <div class="form-group">
@@ -155,6 +157,12 @@
         </div>
         <div>Extracting Mails</div>
     </div>
+    </div>
+
+    <!-- Footer - Use Bootstrap's sticky footer classes -->
+    <footer class="footer bg-light text-center" style="position: absolute; bottom: 0; width: 100%;">
+        &copy; 2023 Altersense Ltd. All rights reserved.
+    </footer>
 
     <!-- Include Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -168,4 +176,5 @@
         }
     </script>
 </body>
+
 </html>
