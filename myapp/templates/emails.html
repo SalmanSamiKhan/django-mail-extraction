@@ -1,0 +1,40 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <h1>Email Data</h1>
+    <p>{{json_mail_data}}</p>
+    {% for mail in json_mail_data %}
+        {{ mail }}
+    {% endfor %}
+</body>
+
+</html> -->
+
+<!-- my_template.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON Data Example</title>
+    <!-- {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %} -->
+</head>
+
+<body>
+    <h1 class="text-center">Extracted Emails</h1>
+    <pre id="json_mail_data">{{ json_mail_data|safe }}</pre>
+
+    <script>
+        // Parse the JSON data in JavaScript (you can use jQuery or another library)
+        var jsonData = JSON.parse(document.getElementById('json_mail_data').textContent);
+        
+    </script>
+
+</body>
+
+</html>

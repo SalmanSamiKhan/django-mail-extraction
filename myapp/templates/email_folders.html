@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Folders</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <div class="text-center my-3 mx-3">
+        <div class="btn-group">
+            <!-- Add your buttons here -->
+            <a href="{% url 'emails'}">
+                <!-- <button class="btn btn-info mx-3" onclick=>Inbox</button> -->
+                Inbox
+            </a>
+            <button class="btn btn-info mx-3">Draft</button>
+            <button class="btn btn-info mx-3">Sent Items</button>
+        </div>
+    </div>
+</body>
+
+</html>

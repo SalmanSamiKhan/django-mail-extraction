@@ -1,0 +1,114 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Input Form</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <div class="container">
+        <h1>User Input Form</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Input Form</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            
+            <div class="col-md-6">
+                <h2 class="mb-4">User Credentials</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Shared Email Address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tenantId" class="form-label">Tenant Id</label>
+                        <input type="text" class="form-control" id="tenantId" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="clientId" class="form-label">Client Id</label>
+                        <input type="text" class="form-control" id="clientId" required>
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="clientSecret" class="form-label">Client Secret</label>
+                        <input type="text" class="form-control" id="clientSecret" required>
+                        
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html> -->
+
+
+<!-- contact.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Credentials</h1>
+        <form method="post" action="{% url 'user_input' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Shared Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="tenant_id">Tenant Id</label>
+                <input type="text" class="form-control" id="tenant_id" name="tenant_id" required>
+            </div>
+            <div class="form-group">
+                <label for="client_id">Client Id</label>
+                <input type="text" class="form-control" id="client_id" name="client_id" required>
+            </div>
+            <div class="form-group">
+                <label for="client_secret">Client Secret</label>
+                <input type="text" class="form-control" id="client_secret" name="client_secret" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
