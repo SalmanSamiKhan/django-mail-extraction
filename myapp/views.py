@@ -1,5 +1,8 @@
 import json
+from django.http import FileResponse
 from django.shortcuts import render
+
+from myproject import settings
 from .forms import UserForm
 from . import main
 import os
@@ -48,9 +51,6 @@ def email_folders(request):
     return render(request, 'email_folders.html')
 
 
-
-
-
 def folder_view(request, folder_name):
     
     # json file path
@@ -76,3 +76,18 @@ def folder_view(request, folder_name):
         'filtered_emails': filtered_emails,
     }
     return render(request, 'folder_view.html', context)
+
+
+def download_json(request):
+    # Define the path to the JSON file in the media directory
+    # Get the project's base directory
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    # Define the path to download the JSON file (e.g., in the media directory)
+    json_file_path = os.path.join(base_dir, 'media', 'json_mail_data.json')
+    # json_file_path = os.path.join(settings.MEDIA_ROOT, 'json_mail_data.json')
+
+    # Serve the JSON file as a downloadable response
+    response = FileResponse(open(json_file_path, 'rb'))
+    response['Content-Type'] = 'application/json'
+    response['Content-Disposition'] = f'attachment; filename=json_mail_data.json'
+    return response

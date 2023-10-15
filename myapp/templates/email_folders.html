@@ -49,6 +49,8 @@
             </div>
             {% endfor %}
         </div>
+        {% comment %} <button class="button btn-primary">Download Json</button> {% endcomment %}
+        <a href="{% url 'download_json' %}" class="btn btn-primary">Download JSON</a>
     </div>
     <!-- Footer - Use Bootstrap's sticky footer classes -->
     <footer class="footer bg-light text-center" style="position: absolute; bottom: 0; width: 100%;">

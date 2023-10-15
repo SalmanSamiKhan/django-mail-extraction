@@ -1,6 +1,8 @@
 # Import necessary modules from graph_api package
 import json
 import os
+import shutil
+import pandas as pd
 from django.http import JsonResponse
 from .graph_api import get_azure_token, get_inbox_response, get_inbox_mails, create_excel, get_folder_names
 
@@ -50,6 +52,7 @@ def extract_mail(shared_email,tenant_id,client_id,client_secret):
 
     json_mail_data = json.dumps(email_data, indent=2)
     
+    
     # save json
     # Get the project's base directory
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -60,6 +63,14 @@ def extract_mail(shared_email,tenant_id,client_id,client_secret):
     # Save the JSON data to the file
     with open(json_file_path, 'w') as json_file:
         json_file.write(json_mail_data)
+        
+    
+    # Excel
+    
+    df = pd.DataFrame(email_data)
+    excel_path = os.path.join(base_dir, 'media', 'shared_mails.xlsx')
+    
+    # df.to_excel(excel_path, index=False)
     
     # json_email_data = JsonResponse({'json email data':json_email_data})
 
