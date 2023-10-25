@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from myapp.models import EmailMessage
 
 
 # class ExtractInboxMails:
@@ -7,12 +8,16 @@ def get_inbox_mails(inbox_response, shared_email, access_token):
     data = []
     if inbox_response.status_code == 200:
         emails = inbox_response.json().get("value", [])
-
+        # print(f'Email Number: {len(emails)}')
+        EmailMessage.objects.all().delete()
         for email in emails:
             
             folder_id = email['parentFolderId']
             # Get the folder name using the folder ID
             folder_name = get_folder_name(shared_email, folder_id, access_token)
+            
+            # Retrieve or create the EmailFolder instance
+            # db_folder, _ = EmailFolder.objects.get_or_create(name=folder_name)
             
             msgid = email["id"]
             sender = (
@@ -71,7 +76,28 @@ def get_inbox_mails(inbox_response, shared_email, access_token):
                     'Subject': subject,
                     'Body': trimmed_body_text
                 }
-            )        
+            )
+            
+            db_receiver_emails = ','.join(receiver_emails)
+            db_cc = ','.join(cc_emails)
+            # print(folder_name)
+            email_msg = EmailMessage(
+                folder_name = folder_name,
+                msgid = msgid,
+                sent_date = sent_time,
+                received_date = received_time,
+                sender = sender_email,
+                receiver = db_receiver_emails,
+                cc = db_cc,
+                subject = subject,
+                body = trimmed_body_text
+            )
+            
+            # Check if the email message already exists in the database
+            # existing_message = EmailMessage.objects.filter(msgid=email_msg.msgid).first()
+            
+            
+            email_msg.save()        
     
             
 
